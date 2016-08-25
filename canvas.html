@@ -1,0 +1,52 @@
+<!Doctype html>
+<html>
+<head>
+<style>
+#canvas2
+{border:5px solid red;
+}
+
+</style>
+</head>
+<body>
+<canvas id="canvas2" width="1300" height="600" >
+</canvas>
+<script>
+var context = document.getElementById('canvas2').getContext("2d");
+var canvas=document.getElementById('canvas2');
+canvas.addEventListener("keypress",key,false);
+var img = new Image();
+var img1 = new Image();
+var img2 = new Image();
+var img3 = new Image();
+var x=635;
+var y=420;
+img.onload =function ()
+{context.drawImage(img,x,y, 80, 80);
+}
+img1.onload = function () {
+    context.drawImage(img1,600, 500, 150, 100);
+}
+img2.onload = function () {
+    context.drawImage(img2,580, 50, 60, 60);
+}
+img3.onload = function () {
+    context.drawImage(img3,670, 50, 60, 60);
+}
+
+img.src = "tank1.png";
+img1.src = "bird.png";
+img2.src = "tankd.png";
+img3.src = "tankd.png";
+function key(e)
+{if(e.keycode==37)
+{context.clearRect(x,y,80,80);
+y=y-2;
+img.src="tank1.png";
+context.drawImage(img,x,y, 80, 80);
+}
+}
+</script>
+
+</body>
+</html>
