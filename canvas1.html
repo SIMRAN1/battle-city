@@ -1,0 +1,63 @@
+<!Doctype html>
+<html>
+<head>
+<style>
+#canvas2
+{border:5px solid red;
+
+}
+
+</style>
+</head>
+<body>
+<canvas id="canvas2" width="1300" height="600" >
+</canvas>
+<script>
+var canvas=document.getElementById('canvas2');
+var context =canvas.getContext("2d");
+window.addEventListener("keydown",key,true);
+var img = new Image();
+var img1 = new Image();
+var img2 = new Image();
+var img3 = new Image();
+var img4 = new Image();
+var img5=new Image();
+var img6=new Image();
+var img7=new Image();
+var img8=new Image();
+var x=635;
+var y=420;
+var c=0;
+var n,i;
+var ide;
+var ids;
+onload=function()
+{setInterval(move,2500);
+}
+function move()
+{var q=600;
+var t=110;
+context.drawImage(img6,q,t, 30,30);
+
+var id = setInterval(fr,2);
+ 
+function fr()
+{console.log("ch");
+if(t<500)
+{context.clearRect(q,t,30,30);
+t=t+1;
+context.drawImage(img6,q,t,30,30);
+}
+else if(t==500)
+{console.log("im");
+context.clearRect(600,500,150,100);
+context.clearRect(q,500,150,100);
+img1.src="bird1.png";
+context.drawImage(img1,600,500,150,100);
+
+
+}
+
+
+}
+}

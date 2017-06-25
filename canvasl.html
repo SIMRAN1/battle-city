@@ -1,0 +1,259 @@
+<!Doctype html>
+<html>
+<head>
+<style>
+#canvas2
+{
+	border:5px solid red;
+	background: url(brickwall2.png) no-repeat center center fixed;
+
+}
+
+
+</style>
+</head>
+<body>
+	<canvas id="canvas2" width="1300" height="600" >
+		</canvas>
+
+	<script>
+		var audio = new Audio('stage_start.ogg');
+		audio.play();
+
+		var canvas=document.getElementById('canvas2');
+		var context =canvas.getContext("2d");
+		window.addEventListener("keydown",key,true);
+		var n=0;
+		var score=0;
+
+		function drawScore() {
+    			context.font = "30px Verdana";
+			    context.fillStyle = "#0095DD";
+			    /*score();*/
+    			context.fillText("Score: "+score, 330, 60);
+				}
+			
+			window.onload=drawScore();
+			
+			var img = new Image();
+			var img1 = new Image();
+			var img2 = new Image();
+			var img3 = new Image();
+			var img4 = new Image();
+			var img5=new Image();
+			var img6=new Image();
+			var img7=new Image();
+			var img8=new Image();
+			var gameover=new Image();
+				var x=635;
+				var y=420;
+				var c=0;
+				var n=0,i,w=0,z=0,e=0,a=0,b=0,b1=0,scr=0;
+				var ide;
+				var id,idsa;
+					onload=function(){
+						ide=setInterval(move,2500);
+						idsa=setInterval(move1,2500);
+						}
+
+				function move(){
+					var q=600;
+					var t=110;
+					context.drawImage(img6,q,t, 30,30);
+					if(n==0){
+						var ids = setInterval(fr,2);
+						} 
+					else{
+						clearInterval(ids);
+					}			
+
+				function fr(){	
+					if((x<q)&&(x+80>q)&&(t==y))
+					{
+						console.log("waheguru");
+						context.clearRect(x,y,80,80);
+						context.clearRect(q,t,30,30);
+						context.drawImage(img5,x,y,80,80);
+						n++;
+						setTimeout(function(){ alert("GAME OVER"); }, 1000);
+						a++;
+					}
+					else if(t<500)
+						{
+							context.clearRect(q,t,30,30);
+							t=t+1;
+							context.drawImage(img6,q,t,30,30);
+						}
+					else if(t==500){
+						z++;
+					if(z==1){
+						context.clearRect(600,500,150,100);
+						context.clearRect(q,500,150,100);
+						img1.src="bird1.png";
+						context.drawImage(img1,600,500,150,100);
+						n++;
+					}
+					else if(z==2){
+						context.clearRect(600,500,150,100);
+						context.clearRect(q,500,150,100);
+						img1.src="bird2.png";
+						context.drawImage(img1,600,500,150,100);
+						}
+					else if(z==3){
+						context.clearRect(600,500,150,100);
+						context.clearRect(q,500,150,100);
+						img1.src="bird3.png";
+						context.drawImage(img1,600,500,150,100);
+						setTimeout(function(){ alert("GAME OVER"); }, 1000);
+						a++;
+						}
+					}
+				}
+
+			}
+					function move1(){
+						var q=690;
+						var t=110;
+						context.drawImage(img6,q,t, 30,30);
+							if(w==0){
+								var idsd = setInterval(fr1,2);
+								} 
+							else{
+								clearInterval(idsd);
+							}
+
+					function fr1(){
+						if((x<q)&&(x+80>q)&&(t==y))
+						{
+							console.log("w");
+							context.clearRect(x,y,80,80);
+							context.clearRect(q,t,30,30);
+							context.drawImage(img5,x,y,80,80);
+							n++;
+						setTimeout(function(){ alert("GAME OVER"); }, 1000);
+						a++;
+						}
+						else if(t<500){
+							context.clearRect(q,t,30,30);
+							t=t+1;
+							context.drawImage(img6,q,t,30,30);
+							}
+						else if(t==500){
+							e++;
+
+							if(e==1){
+								context.clearRect(600,500,150,100);
+								context.clearRect(q,500,150,100);
+								img1.src="bird1.png";
+								context.drawImage(img1,600,500,150,100);
+								n++;
+							}
+						else if(e==2){
+							context.clearRect(600,500,150,100);
+							context.clearRect(q,500,150,100);
+							img1.src="bird2.png";
+							context.drawImage(img1,600,500,150,100);
+							}
+						else if(e==3){
+							context.clearRect(600,500,150,100);
+							context.clearRect(q,500,150,100);
+							img1.src="bird3.png";
+							context.drawImage(img1,600,500,150,100);
+							setTimeout(function(){ alert("GAME OVER"); }, 1000);
+						}
+					}
+				}
+			}
+
+img.onload =function (){
+	context.drawImage(img,x,y, 80, 80);
+	}
+
+img1.onload = function (){
+    context.drawImage(img1,600, 500, 150, 100);
+	console.log("hi.ii");
+	}
+
+img2.onload = function (){
+    context.drawImage(img2,580, 50, 60, 60);
+	}
+
+img3.onload = function (){
+    context.drawImage(img3,670, 50, 60, 60);
+	}
+
+	img.src = "tank1.png";
+	img1.src = "bird.png";
+	img2.src = "tankd.png";
+	img3.src = "tankd.png";
+	img4.src = "bullet.png";
+	img5.src = "fire.png";
+	img6.src="bullet1.png";
+	img7.src="bird1.png";
+	img7.src="bird2.png";
+	gameover.src="gameover.png";
+		function key(e){
+				if(x>=590&&e.keyCode==37){
+					context.clearRect(x,y,80,80);
+					x=x-2;
+					context.drawImage(img,x,y, 80, 80);
+					}
+				else if(x<=680&&e.keyCode==39){
+					context.clearRect(x,y,80,80);
+					x=x+2;
+					context.drawImage(img,x,y, 80, 80);
+					}
+				else if(e.keyCode==13){
+					console.log("hi");
+					mouse();
+				}
+			}			
+
+				function mouse(){
+					l=x+25;
+					m=380;
+					ide=setInterval(frame,1);
+						function frame(){
+							context.drawImage(img4,l,m, 30,30);
+							if(m>=110){
+								context.clearRect(l,m,30,30);
+								m=m-2;
+								context.drawImage(img4,l,m,30,30);
+							}
+							else{
+								context.clearRect(l,m,30,30);
+								if(l>=580&&l<=640){
+									context.clearRect(580, 50, 60, 60);
+								img2.src="fire.png";
+								n++;
+								console.log("abcdeffsfhjshjbs");
+								context.drawImage(img2,580,50,60,60);
+								b++;
+								score();
+							}
+
+					else if(l>=670&&l<=730){
+						context.clearRect(670, 50, 60, 60);
+						img3.src="fire.png";
+						w++;
+						context.drawImage(img3,670,50,60,60);
+						b1++;
+						score();
+						}
+					}
+					clearInterval(id);
+					}
+				}
+					function score(){
+						if(b==1||b1==1){
+							score=score+50;
+							}
+						if((b==1)&&(b1==1)){
+							score=score+50;
+						setTimeout(function(){ alert"QUALIFIED TO NEXT LEVEL"); }, 1000);
+						}
+					}
+</script>
+
+</body>
+</html>

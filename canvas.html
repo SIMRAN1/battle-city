@@ -3,29 +3,179 @@
 <head>
 <style>
 #canvas2
-{border:5px solid red;
+{
+	border:5px solid red;
+	background: url(brickwall2.png) no-repeat center center fixed;
+
 }
+	
+
 
 </style>
 </head>
 <body>
-<canvas id="canvas2" width="1300" height="600" >
-</canvas>
+<div>
+		<canvas id="canvas2" width="1300" height="600" >
+		</canvas>
+
+</div>
+
+	
+		
 <script>
-var context = document.getElementById('canvas2').getContext("2d");
-var canvas=document.getElementById('canvas2');
-canvas.addEventListener("keypress",key,false);
-var img = new Image();
-var img1 = new Image();
-var img2 = new Image();
-var img3 = new Image();
+		var audio = new Audio('stage_start.ogg');
+		audio.play();
+
+		var canvas=document.getElementById('canvas2');
+		var context =canvas.getContext("2d");
+		window.addEventListener("keydown",key,true);
+		var n=0;
+		var img = new Image();
+		var img1 = new Image();
+		var img2 = new Image();
+		var img3 = new Image();
+var img4 = new Image();
+var img5=new Image();
+var img6=new Image();
+var img7=new Image();
+var img8=new Image();
 var x=635;
 var y=420;
+var c=0;
+var n=0,i,w=0,z=0,e=0;
+var ide;
+var id;
+var score=0;
+		function calcScore(){
+
+		}
+
+	function drawScore() {
+    			context.font = "30px Verdana";
+			    context.fillStyle = "#0095DD";
+    			context.fillText("Score: "+score, 330, 60);
+				}
+			
+			window.onload=drawScore();
+onload=function() 
+{
+setInterval(move,2500);
+setInterval(move1,2500);
+
+}
+function move()
+{var q=600;
+var t=110;
+context.drawImage(img6,q,t, 30,30);
+if(n==0)
+{
+var id = setInterval(fr,2);
+} 
+else if(n==1&&w==1)
+{alert("game over");
+}
+function fr()
+{console.log("ch");
+if((t<500&&t!=y))
+{context.clearRect(q,t,30,30);
+t=t+1;
+context.drawImage(img6,q,t,30,30);
+}
+else if(t==500)
+{z++;
+console.log("im");
+if(z==1)
+{context.clearRect(600,500,150,100);
+context.clearRect(q,500,150,100);
+img1.src="bird1.png";
+context.drawImage(img1,600,500,150,100);
+}
+else if(z==2)
+{context.clearRect(600,500,150,100);
+context.clearRect(q,500,150,100);
+img1.src="bird2.png";
+context.drawImage(img1,600,500,150,100);
+}
+else if(z==3)
+{context.clearRect(600,500,150,100);
+context.clearRect(q,500,150,100);
+img1.src="bird3.png";
+context.drawImage(img1,600,500,150,100);
+alert("GAME OVER");
+}
+
+}
+else if(t==y)
+{
+context.clearRect(x,y,80,80);
+context.clearRect(q,t,30,30);
+context.drawImage(img5,x,y,80,80);
+alert("GAME OVER");
+}
+
+}
+}
+function move1()
+{var q=690;
+var t=110;
+context.drawImage(img6,q,t, 30,30);
+if(w==0)
+{
+var idf= setInterval(fr1,2);
+} 
+if(n==1&&w==1)
+{alert("GAME OVER");
+}
+function fr1()
+{console.log("ch");
+if(t<500&&t!=y)
+{context.clearRect(q,t,30,30);
+t=t+1;
+context.drawImage(img6,q,t,30,30);
+}
+else if(t==500)
+{e++;
+console.log("im");
+if(e==1)
+{context.clearRect(600,500,150,100);
+context.clearRect(q,500,150,100);
+img1.src="bird1.png";
+context.drawImage(img1,600,500,150,100);
+}
+else if(e==2)
+{context.clearRect(600,500,150,100);
+context.clearRect(q,500,150,100);
+img1.src="bird2.png";
+context.drawImage(img1,600,500,150,100);
+}
+else if(e==3)
+{context.clearRect(600,500,150,100);
+context.clearRect(q,500,150,100);
+img1.src="bird3.png";
+context.drawImage(img1,600,500,150,100);
+alert("GAME OVER");
+}
+}
+else if(t==y)
+{
+context.clearRect(x,y,80,80);
+context.clearRect(q,t,30,30);
+context.drawImage(img5,x,y,80,80);
+}
+
+
+}
+
+}
+
+
+
 img.onload =function ()
 {context.drawImage(img,x,y, 80, 80);
 }
 img1.onload = function () {
     context.drawImage(img1,600, 500, 150, 100);
+	console.log("hi.ii");
 }
 img2.onload = function () {
     context.drawImage(img2,580, 50, 60, 60);
@@ -38,14 +188,74 @@ img.src = "tank1.png";
 img1.src = "bird.png";
 img2.src = "tankd.png";
 img3.src = "tankd.png";
+img4.src = "bullet.png";
+img5.src = "fire.png";
+img6.src="bullet1.png";
+img7.src="bird1.png";
+img7.src="bird2.png";
 function key(e)
-{if(e.keycode==37)
+{
+
+
+if(x>=590&&e.keyCode==37)
+{
+context.clearRect(x,y,80,80);
+x=x-2;
+
+context.drawImage(img,x,y, 80, 80);
+
+
+}
+else if(x<=680&&e.keyCode==39)
 {context.clearRect(x,y,80,80);
-y=y-2;
-img.src="tank1.png";
+x=x+2;
+
 context.drawImage(img,x,y, 80, 80);
 }
+else if(e.keyCode==13)
+{console.log("hi");
+mouse();
+
 }
+
+}
+
+function mouse()
+{l=x+25;
+m=380;
+ide=setInterval(frame,1);
+function frame()
+{context.drawImage(img4,l,m, 30,30);
+if(m>=110)
+{context.clearRect(l,m,30,30);
+m=m-2;
+
+context.drawImage(img4,l,m,30,30);
+}
+else
+{context.clearRect(l,m,30,30);
+if(l>=580&&l<=640)
+{context.clearRect(580, 50, 60, 60);
+img2.src="fire.png";
+n++;
+score=score+100;
+console.log("abcdeffsfhjshjbs");
+context.drawImage(img2,580,50,60,60);
+}
+
+else if(l>=670&&l<=730)
+{
+context.clearRect(670, 50, 60, 60);
+img3.src="fire.png";
+w++;
+context.drawImage(img3,670,50,60,60);
+}
+}
+clearInterval(id);
+}
+
+}
+
 </script>
 
 </body>

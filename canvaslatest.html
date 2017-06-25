@@ -1,0 +1,266 @@
+<!Doctype html>
+<html>
+<head>
+<style>
+
+#canvas2
+{
+	border:5px solid red;
+	background: url(brickwall2.png) no-repeat center center fixed;
+
+}
+
+
+</style>
+</head>
+<body>
+	<canvas id="canvas2" width="1300" height="600" >
+		</canvas>
+
+	<script>
+		var audio = new Audio('stage_start.mp3');
+		audio.play();
+
+		var canvas=document.getElementById('canvas2');
+		var context =canvas.getContext("2d");
+		window.addEventListener("keydown",key,true);
+		var score=0;
+
+		function drawScore() {
+    			context.font = "30px Verdana";
+			    context.fillStyle = "#0095DD";
+			    scre();
+			    context.fillText("Score: "+score, 330, 60);
+			    if(score==100){
+			    	setTimeout(function(){alert("Congo Next Level !! Your score is "+score);},100);
+			    }
+				}
+			
+			window.onload=drawScore();
+			
+			var savTanker = new Image();
+			var bird = new Image();
+			var devTanker1 = new Image();
+			var devTanker2 = new Image();
+			var bullet1 = new Image();
+			var fire=new Image();
+			var bullet2=new Image();
+			var grass=new Image();
+			var grass13=new Image();
+				var x=635;
+				var y=420;
+				var c=0;
+				var n=0,i,w=0,z=0,e=0,a=0,b=0,b1=0,scr=0;
+				var ide;
+				var id,idsa;
+					onload=function(){
+						ide=setInterval(move,2500);
+						idsa=setInterval(move1,2500);
+						}
+
+				function move(){
+					var q=600;
+					var t=110;
+					context.drawImage(bullet2,q,t, 30,30);
+					if(n==0){
+						var ids = setInterval(fr,2);
+						} 
+					else{
+						clearInterval(ids);
+					}			
+
+				function fr(){	
+					if((x<q)&&(x+80>q)&&(t==y))
+					{
+						
+						context.clearRect(x,y,80,80);
+						context.clearRect(q,t,30,30);
+						context.drawImage(fire,x,y,80,80);
+						n++;
+						setTimeout(function(){ alert("GAME OVER"); }, 1000);
+						a++;
+					}
+					else if(t<500)
+						{
+							context.clearRect(q,t,30,30);
+							t=t+1;
+							context.drawImage(bullet2,q,t,30,30);
+						}
+					else if(t==500){
+						z++;
+					if(z==1){
+						context.clearRect(600,500,150,100);
+						context.clearRect(q,500,150,100);
+						bird.src="bird1.png";
+						context.drawImage(bird,600,500,150,100);
+						n++;
+					}
+					else if(z==2){
+						context.clearRect(600,500,150,100);
+						context.clearRect(q,500,150,100);
+						bird.src="bird2.png";
+						context.drawImage(bird,600,500,150,100);
+						}
+					else if(z==3){
+						context.clearRect(600,500,150,100);
+						context.clearRect(q,500,150,100);
+						bird.src="bird3.png";
+						context.drawImage(bird,600,500,150,100);
+						setTimeout(function(){ alert("GAME OVER"); }, 1000);
+						a++;
+						}
+					}
+				}
+
+			}
+					function move1(){
+						var q=690;
+						var t=110;
+						context.drawImage(bullet2,q,t, 30,30);
+							if(w==0){
+								var idsd = setInterval(fr1,2);
+								} 
+							else{
+								clearInterval(idsd);
+							}
+
+					function fr1(){
+						if((x<q)&&(x+80>q)&&(t==y))
+						{
+							console.log("w");
+							context.clearRect(x,y,80,80);
+							context.clearRect(q,t,30,30);
+							context.drawImage(fire,x,y,80,80);
+							n++;
+						setTimeout(function(){ alert("GAME OVER!! Your Score is "+score); }, 1000);
+						a++;
+						}
+						else if(t<500){
+							context.clearRect(q,t,30,30);
+							t=t+1;
+							context.drawImage(bullet2,q,t,30,30);
+							}
+						else if(t==500){
+							e++;
+
+							if(e==1){
+								context.clearRect(600,500,150,100);
+								context.clearRect(q,500,150,100);
+								bird.src="bird1.png";
+								context.drawImage(bird,600,500,150,100);
+								n++;
+							}
+						else if(e==2){
+							context.clearRect(600,500,150,100);
+							context.clearRect(q,500,150,100);
+							bird.src="bird2.png";
+							context.drawImage(bird,600,500,150,100);
+							}
+						else if(e==3){
+							context.clearRect(600,500,150,100);
+							context.clearRect(q,500,150,100);
+							bird.src="bird3.png";
+							context.drawImage(bird,600,500,150,100);
+							setTimeout(function(){ alert("GAME OVER!!Your score is "+score); }, 1000);
+						}
+					}
+				}
+			}
+
+savTanker.onload =function (){
+	context.drawImage(savTanker,x,y, 80, 80);
+	}
+
+bird.onload = function (){
+    context.drawImage(bird,600, 500, 150, 100);
+	console.log("hi.ii");
+	}
+
+devTanker1.onload = function (){
+    context.drawImage(devTanker1,580, 50, 60, 60);
+	}
+
+devTanker2.onload = function (){
+    context.drawImage(devTanker2,670, 50, 60, 60);
+	}
+grass.onload = function(){
+	context.drawImage(grass,350,200,90,70);
+}
+grass13.onload = function(){
+	context.drawImage(grass13,900,200,90,70);
+}
+	savTanker.src = "tank1.png";
+	bird.src = "bird.png";
+	devTanker1.src = "tankd.png";
+	devTanker2.src = "tankd.png";
+	bullet1.src = "bullet.png";
+	fire.src = "fire.png";
+	bullet2.src="bullet1.png";
+	grass.src="grass2.jpg";
+	grass13.src="grass2.jpg";
+			
+		function key(e){
+				if(x>=590&&e.keyCode==37){
+					context.clearRect(x,y,80,80);
+					x=x-2;
+					context.drawImage(savTanker,x,y, 80, 80);
+					}
+				else if(x<=680&&e.keyCode==39){
+					context.clearRect(x,y,80,80);
+					x=x+2;
+					context.drawImage(savTanker,x,y, 80, 80);
+					}
+				else if(e.keyCode==13){
+					console.log("hi");
+					savTankFire();
+				}
+			}			
+
+				function savTankFire(){
+					l=x+25;
+					m=380;
+					ide=setInterval(frame,1);
+						function frame(){
+							context.drawImage(bullet1,l,m, 30,30);
+							if(m>=110){
+								context.clearRect(l,m,30,30);
+								m=m-2;
+								context.drawImage(bullet1,l,m,30,30);
+							}
+							else{
+								context.clearRect(l,m,30,30);
+								if(l>=580&&l<=640){
+									context.clearRect(580, 50, 60, 60);
+								devTanker1.src="fire.png";
+								n++;
+								
+								context.drawImage(devTanker1,580,50,60,60);
+								b++;
+								drawScore();
+							}
+
+					else if(l>=670&&l<=730){
+						context.clearRect(670, 50, 60, 60);
+						devTanker2.src="fire.png";
+						w++;
+						context.drawImage(devTanker2,670,50,60,60);
+						b1++;
+						drawScore();
+						}
+					}
+					clearInterval(id);
+					}
+				}
+					function scre(){
+						if(b==1||b1==1){
+							score=score+50;
+							}
+						if((b==1)&&(b1==1)){
+							score=score+50;
+						setTimeout(function(){ alert("QUALIFIED TO NEXT LEVEL!!Your score is "+score); }, 1000);
+						}
+					}
+</script>
+
+</body>
+</html>
